@@ -1,0 +1,39 @@
+﻿@model List<BookStoreApp.Domain.Entities.Author>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1 class="text-center">Authors</h1>
+
+<div class="container">
+    <div class="m-3 text-center">
+        <a class="btn btn-success" asp-controller="Books" asp-action="Create">Add new author</a>
+    </div>
+
+    @for (int i = 0; i < Model.Count; i++)
+    {
+        var item = Model[i];
+        if (i % 3 == 0)
+        {
+            @:<div class="row mb-4">
+        }
+        <div class="col-md-4 d-flex justify-content-center mb-4">
+            <div class="card" style="width: 100%; max-width: 18rem; height: 25rem;border:none">
+                <img class="card-img-top" src="@item.imageURL" alt="Card image cap" style="height: 300px; object-fit: cover;">
+                <div class="card-body d-flex flex-column text-center">
+                    <h5 class="card-title">@item.name</h5>
+                    <p class="card-text">@item.surname</p>
+                </div>
+                <div class="card-footer d-flex justify-content-between">
+                    <a asp-controller="Authors" asp-action="Details" asp-route-id="@item.Id" class="btn btn-outline-info text-center">Details</a>
+                </div>
+            </div>
+        </div>
+
+        if (i % 3 == 2)
+        {
+            @:</div>
+        }
+    }
+</div>

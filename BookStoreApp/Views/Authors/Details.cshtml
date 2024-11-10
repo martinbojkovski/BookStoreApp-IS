@@ -1,0 +1,37 @@
+﻿@model BookStoreApp.Domain.Entities.Author
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<div class="container">
+    <div class="row mb-4">
+        <!-- Book Image and Action Buttons -->
+        <div class="col-md-4 d-flex flex-column align-items-center">
+            <img src="@Model.imageURL" alt="Book Image" class="img-fluid" style="max-height: 250px; object-fit: cover;padding-top:55px">
+            <div class="mt-3">
+                <a asp-action="Delete" asp-route-id="@Model.Id" class="btn btn-danger">Delete</a>
+            </div>
+        </div>
+
+        <!-- Book Details -->
+        <div class="col-md-8">
+            <h2>@Model.name @Model.surname</h2>
+            <hr />
+            <dl class="row">
+                <dt class="col-sm-3">
+                    @Html.DisplayNameFor(model => model.shortBiography)
+                </dt>
+                <dd class="col-sm-9">
+                    @Html.DisplayFor(model => model.shortBiography)
+                </dd>
+            </dl>
+        </div>
+    </div>
+
+    <!-- Navigation Buttons -->
+    <div class="text-center">
+        <a asp-action="Edit" asp-route-id="@Model?.Id" class="btn btn-primary">Edit</a>
+        <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+    </div>
+</div>
